@@ -1,17 +1,11 @@
-language: php
+dist: trusty
+addons:
+  sonarcloud:
+    organization: "haamine"
+    token:
+      secure: "b459681d2299b74eb8f6153bbe24f7087b4582ac" # encrypted value of your token
 
-sudo: false
-
-php:
-  - 5.6
-  - 7.0
-
-before_script:
-  - composer install --prefer-source
-
-script: ./vendor/bin/phpunit --colors tests
-
-cache:
-    directories:
-        - vendor
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner
 
