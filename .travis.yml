@@ -4,8 +4,9 @@ addons:
     organization: "haamine"
     token:
       secure: "b459681d2299b74eb8f6153bbe24f7087b4582ac" # encrypted value of your token
-
+install: composer install --prefer-dist
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - vendor/bin/phpunit  --coverage-clover=coverage-report.clover --log-junit=test-report.xml
   - sonar-scanner
 
